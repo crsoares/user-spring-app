@@ -3,6 +3,7 @@ package io.github.crsoares.api.services.impl;
 import io.github.crsoares.api.domain.User;
 import io.github.crsoares.api.repositories.UserRepository;
 import io.github.crsoares.api.services.UserService;
+import io.github.crsoares.api.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findById(Integer id) {
         Optional<User> obj = repository.findById(id);
-        return obj.orElse(null);
+        return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
     }
 }

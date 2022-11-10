@@ -1,5 +1,6 @@
 package io.github.crsoares.api.domain.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UserDTO {
     private Integer id;
-    private String nome;
+    private String name;
     private String email;
+
+    @JsonIgnore
     private String password;
 }
